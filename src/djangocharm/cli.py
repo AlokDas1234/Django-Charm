@@ -1,69 +1,13 @@
-# # src/djangocharm/cli.py
-#
-# import sys
-#
-# def main():
-#     args = sys.argv[1:]
-#     params = {}
-#
-#     for arg in args:
-#         if '=' in arg:
-#             key, value = arg.split('=', 1)
-#             params[key] = value
-#
-#     a1 = int(params.get("a1", 0))
-#     a2 = int(params.get("a2", 0))
-#
-#     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
-# src/djangocharm/cli.py
-
-# import argparse
-#
-# def main():
-#     parser = argparse.ArgumentParser(description="Add two numbers with short flags")
-#     parser.add_argument("-a1", type=int, required=True, help="First number")
-#     parser.add_argument("-a2", type=int, required=True, help="Second number")
-#
-#     args = parser.parse_args()
-#
-#     a1 = args.a1
-#     a2 = args.a2
-#
-#     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
-
-
-# src/djangocharm/cli.py
-
-# import argparse
-#
-# def main():
-#     parser = argparse.ArgumentParser(description="Add two numbers")
-#
-#     # Optional args — not required so we can prompt if missing
-#     parser.add_argument("-a1", type=int, help="First number")
-#     parser.add_argument("-a2", type=int, help="Second number")
-#
-#     args = parser.parse_args()
-#
-#     # If arguments not provided, ask interactively
-#     if args.a1 is None:
-#         args.a1 = int(input("Enter a1: "))
-#
-#     if args.a2 is None:
-#         args.a2 = int(input("Enter a2: "))
-#
-#     print(f"a1 = {args.a1}, a2 = {args.a2}, sum = {args.a1 + args.a2}")
 
 import argparse
 import os
 import subprocess
-
 import os
 import multiprocessing as mp
 
 
 def main():
-    mp.freeze_support()
+    
     parser = argparse.ArgumentParser(description="Create Django Project")
 
     # parser.add_argument("-p1", type=str, help="Directory name to create")
@@ -362,4 +306,5 @@ def add_app_to_installed_apps(app_name, settings_path):
     print(f"Added '{app_name}' to INSTALLED_APPS.")
 
 if __name__=="__main__":
+    mp.freeze_support()
     main()
