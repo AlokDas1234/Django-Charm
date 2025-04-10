@@ -20,10 +20,7 @@ Install using pip:
 ```bash
 pip install djangocharm
 ```
-OR
-```bash
-pip install djangocharm -p myproject -a myapp
-```
+
 ___________________________________________________________________________________________________________________________________________________________________
 
 [Link text](https://example.com)
