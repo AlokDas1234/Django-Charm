@@ -1,6 +1,6 @@
 # djangocharm
 
-This package aims to create  django project and app  executing one single command (Including the views.py and index.html).To start a Django app  one  must have gone through  the following  configurations
+This package aims to create  django project and app  executing one single command (Including the views.py and index.html).To start a Django app  one  must have gone through  the following  configurations:
 
 - [x] Django install (pip install django)
 - [x] Start the  project
@@ -24,7 +24,6 @@ OR
 ```bash
 pip install djangocharm -p myproject -a myapp
 ```
-
 ___________________________________________________________________________________________________________________________________________________________________
 
 [Link text](https://example.com)
