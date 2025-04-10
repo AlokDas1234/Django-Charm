@@ -13,6 +13,15 @@ This package aims to create  django project and app  executing one single comman
 
 This package does all this things in a single command just provide the  project name and app name rest   leave it on the package to configure your app.
 
+## Installation
+
+Install using pip:
+
+```bash
+pip install djangocharm
+```
+
+
 ___________________________________________________________________________________________________________________________________________________________________
 
 [Link text](https://example.com)
@@ -25,6 +34,18 @@ Use the `print()` function.
 |----------|----------|
 | Alice    | Developer|
 | Bob      | Tester   |
+
+# My Python Package
+
+Welcome to **My Python Package**! This is a great package for solving amazing problems.
+
+## Features
+
+<img src="https://example.com/my-image.png" alt="Feature Image" width="600">
+
+- Feature 1
+- Feature 2
+
 
 
 
