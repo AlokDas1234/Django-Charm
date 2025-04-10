@@ -3,12 +3,12 @@
 This package aims to create  django project and app  executing one single command.To start a Django app  one  must have gone through  the following  configurations
 
 - [x] Django install (pip install django)
-- [x] django-admin startproject projectname
+- [x] Start the  project
 - [x] Navigate to your Django project directory
-- [x] python manage.py startapp myapp
-- [x] configure the project level urls.py
-- [x] configure the app level urls.py
-- [x] add app name in the settings.py's installed aps
+- [x] Start the app
+- [x] Configure the project level urls.py
+- [x] Configure the app level urls.py
+- [x] Add app name in the settings.py's installed aps
 - [x] configure the index and views.py
 
 This package does all this things in a single command just provide the  project name and app name rest   leave it on the package to configure your app.
@@ -20,7 +20,10 @@ Install using pip:
 ```bash
 pip install djangocharm
 ```
-
+OR
+```bash
+pip install djangocharm -p myproject -a myapp
+```
 
 ___________________________________________________________________________________________________________________________________________________________________
 
