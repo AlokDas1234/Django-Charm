@@ -85,7 +85,7 @@ def create_index_template(app_path,app_name):
     <title>Upload Form</title>
 </head>
 <body>
-<h1>Hi</h1>
+<h1>Welcome To Django Charm</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
