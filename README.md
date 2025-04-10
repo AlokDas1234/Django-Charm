@@ -1,6 +1,7 @@
 # djangocharm
 
-This package designed to fecilate the  configuration of django project and app in a single package installation.
+This package aims to create  django project and app  executing one single command.To start a Django app  one need to 
+
 
 
 [Link text](https://example.com)
