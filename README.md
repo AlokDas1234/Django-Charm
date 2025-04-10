@@ -1,5 +1,6 @@
 # djangocharm
 
+This package designed to fecilate the  configuration of django project and app in a single package installation.
 
 
 [Link text](https://example.com)
