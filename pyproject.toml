@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "djangocharm"
+name = "django-charm"
 version = "0.1.5"
 description = "A simple test package"
-readme = ""
+readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
   "django>=4.2",
@@ -21,7 +21,7 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [project.scripts]
-djangocharm = "djangocharm.cli:main"
+django-charm = "django_charm.cli:main"
 
 
 

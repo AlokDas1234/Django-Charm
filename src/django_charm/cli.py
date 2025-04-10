@@ -1,4 +1,4 @@
-# # src/djangocharm/cli.py
+# # src/django_charm/cli.py
 #
 # import sys
 #
@@ -15,7 +15,7 @@
 #     a2 = int(params.get("a2", 0))
 #
 #     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
-# src/djangocharm/cli.py
+# src/django_charm/cli.py
 
 # import argparse
 #
@@ -32,7 +32,7 @@
 #     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
 
 
-# src/djangocharm/cli.py
+# src/django_charm/cli.py
 
 # import argparse
 #
@@ -55,23 +55,17 @@
 #     print(f"a1 = {args.a1}, a2 = {args.a2}, sum = {args.a1 + args.a2}")
 
 import argparse
-import os
 import subprocess
-
 import os
 import multiprocessing as mp
 
 
 def main():
-    mp.freeze_support()
     parser = argparse.ArgumentParser(description="Create Django Project")
-
-    # parser.add_argument("-p1", type=str, help="Directory name to create")
     parser.add_argument("-p", type=str, help="project")
     parser.add_argument("-a", type=str, help="app")
 
     args = parser.parse_args()
-
     if args.p is None:
         args.p = input("Enter project name: ")
 
@@ -91,7 +85,6 @@ def main():
     if process.returncode == 0:
         if args.a is None:
             args.a = input("Enter app name: ")
-        # command = f"python manage.py startapp {args.a}"
 
         process = subprocess.Popen(
             ["python ", "manage.py", "startapp", args.a],
@@ -101,8 +94,6 @@ def main():
             stdout=subprocess.PIPE
         )
         stdout, stderr = process.communicate()
-
-        # print(f"Command: {command}")
 
         if stderr:
             print(f"Errors:\n{stderr.decode()}")
@@ -126,11 +117,11 @@ def main():
         create_views_file(app_path, args.a)
         create_or_update_app_urls(app_path)
 
-def create_index_template(app_path,app_name):
-    # Paths
+
+def create_index_template(app_path, app_name):
     templates_dir = os.path.join(app_path, 'templates', app_name)
-    print("Templates_dir:",templates_dir)
-    print("Templates_dir_app_name:",app_path)
+    print("Templates_dir:", templates_dir)
+    print("Templates_dir_app_name:", app_path)
     os.makedirs(templates_dir, exist_ok=True)
 
     index_path = os.path.join(templates_dir, 'index.html')
@@ -142,13 +133,12 @@ def create_index_template(app_path,app_name):
     <title>Upload Form</title>
 </head>
 <body>
-<h1>Hi</h1>
+<h1>Welcome To Django Charm</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <label for="file">Choose a file:</label><br>
-    <input type="file" name="file"><br><br>
+
 
     <label for="text_input">Text input:</label><br>
     <input type="text" name="text_input"><br><br>
@@ -158,6 +148,8 @@ def create_index_template(app_path,app_name):
         <option value="option1">Option1</option>
         <option value="option2">Option2</option>
     </select><br><br>
+    <label for="file">Choose a file:</label><br>
+    <input type="file" name="file"><br><br>
 
     <button type="submit">Submit</button>
 </form>
@@ -171,7 +163,7 @@ def create_index_template(app_path,app_name):
     print(f"✅ Created index.html at: {index_path}")
 
 
-def create_views_file(app_path,app_name):
+def create_views_file(app_path, app_name):
     views_path = os.path.join(app_path, 'views.py')
 
     view_code = f'''
@@ -361,5 +353,7 @@ def add_app_to_installed_apps(app_name, settings_path):
 
     print(f"Added '{app_name}' to INSTALLED_APPS.")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
+    mp.freeze_support()
     main()
