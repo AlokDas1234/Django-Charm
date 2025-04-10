@@ -1,6 +1,5 @@
 
 import argparse
-import os
 import subprocess
 import os
 import multiprocessing as mp
@@ -91,8 +90,7 @@ def create_index_template(app_path,app_name):
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <label for="file">Choose a file:</label><br>
-    <input type="file" name="file"><br><br>
+    
 
     <label for="text_input">Text input:</label><br>
     <input type="text" name="text_input"><br><br>
@@ -102,6 +100,8 @@ def create_index_template(app_path,app_name):
         <option value="option1">Option1</option>
         <option value="option2">Option2</option>
     </select><br><br>
+    <label for="file">Choose a file:</label><br>
+    <input type="file" name="file"><br><br>
 
     <button type="submit">Submit</button>
 </form>
