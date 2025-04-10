@@ -5,16 +5,12 @@ import os
 import multiprocessing as mp
 
 
-def main():
-    
+def main():    
     parser = argparse.ArgumentParser(description="Create Django Project")
-
-    # parser.add_argument("-p1", type=str, help="Directory name to create")
     parser.add_argument("-p", type=str, help="project")
     parser.add_argument("-a", type=str, help="app")
 
     args = parser.parse_args()
-
     if args.p is None:
         args.p = input("Enter project name: ")
 
@@ -34,7 +30,7 @@ def main():
     if process.returncode == 0:
         if args.a is None:
             args.a = input("Enter app name: ")
-        # command = f"python manage.py startapp {args.a}"
+       
 
         process = subprocess.Popen(
             ["python ", "manage.py", "startapp", args.a],
@@ -44,8 +40,6 @@ def main():
             stdout=subprocess.PIPE
         )
         stdout, stderr = process.communicate()
-
-        # print(f"Command: {command}")
 
         if stderr:
             print(f"Errors:\n{stderr.decode()}")
@@ -70,7 +64,7 @@ def main():
         create_or_update_app_urls(app_path)
 
 def create_index_template(app_path,app_name):
-    # Paths
+   
     templates_dir = os.path.join(app_path, 'templates', app_name)
     print("Templates_dir:",templates_dir)
     print("Templates_dir_app_name:",app_path)
