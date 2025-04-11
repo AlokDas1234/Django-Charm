@@ -311,6 +311,7 @@ def add_app_to_urls(app_name, urls_path):
     print(f"✅ Ensured 'include' is imported and '{app_name}' is registered in {urls_path}")
 
 
+
 def add_app_to_installed_apps(app_name, settings_path):
     with open(settings_path, 'r') as file:
         lines = file.readlines()

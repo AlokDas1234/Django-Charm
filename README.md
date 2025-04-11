@@ -1,4 +1,4 @@
-# djangocharm
+# django-charm
 
 This package aims to create  django project and app  executing one single command (Including the views.py and index.html).To start a Django app  one  must have gone through  the following  configurations:
 
@@ -29,10 +29,10 @@ ________________________________________________________________________________
 Use the `print()` function.
 
 
-| Name     | Role     |
-|----------|----------|
-| Alice    | Developer|
-| Bob      | Tester   |
+| Name        | Role      |
+|-------------|-----------|
+| Alice       | Developer |
+| Bob         | Tester    |
 
 # My Python Package
 
@@ -91,7 +91,7 @@ Provide additional examples or use cases to help users understand how to use you
 from your_package_name import your_module
 your_module.example_function()
 
-# Example 2
+>> Example 2
 ```
 
 ## License
@@ -106,7 +106,7 @@ Explain how others can contribute to your project.
 4. Push to the branch (`git push origin feature-branch`)
 5. Open a Pull Request
 
----
+
 
 Would you like me to generate specific content for any of these sections?
 
