@@ -49,8 +49,8 @@ Here’s a suggested structure for the `README.md` file for your Python package,
 
 ---
 
-# Project Name
-A brief description of your Python package and its purpose.
+# django-charm
+This package aims to create  django project and app  executing one single command (Including the views.py and index.html)
 
 ## Table of Contents
 - [Installation](#installation)
@@ -63,7 +63,7 @@ A brief description of your Python package and its purpose.
 ## Installation
 Provide instructions for installing the package, including dependencies and how to install it from PyPI (if applicable) or via source.
 ```bash
-pip install your-package-name
+pip install django-charm
 ```
 
 ## Usage
