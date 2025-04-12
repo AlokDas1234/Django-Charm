@@ -1,59 +1,3 @@
-# # src/django_charm/cli.py
-#
-# import sys
-#
-# def main():
-#     args = sys.argv[1:]
-#     params = {}
-#
-#     for arg in args:
-#         if '=' in arg:
-#             key, value = arg.split('=', 1)
-#             params[key] = value
-#
-#     a1 = int(params.get("a1", 0))
-#     a2 = int(params.get("a2", 0))
-#
-#     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
-# src/django_charm/cli.py
-
-# import argparse
-#
-# def main():
-#     parser = argparse.ArgumentParser(description="Add two numbers with short flags")
-#     parser.add_argument("-a1", type=int, required=True, help="First number")
-#     parser.add_argument("-a2", type=int, required=True, help="Second number")
-#
-#     args = parser.parse_args()
-#
-#     a1 = args.a1
-#     a2 = args.a2
-#
-#     print(f"a1 = {a1}, a2 = {a2}, sum = {a1 + a2}")
-
-
-# src/django_charm/cli.py
-
-# import argparse
-#
-# def main():
-#     parser = argparse.ArgumentParser(description="Add two numbers")
-#
-#     # Optional args — not required so we can prompt if missing
-#     parser.add_argument("-a1", type=int, help="First number")
-#     parser.add_argument("-a2", type=int, help="Second number")
-#
-#     args = parser.parse_args()
-#
-#     # If arguments not provided, ask interactively
-#     if args.a1 is None:
-#         args.a1 = int(input("Enter a1: "))
-#
-#     if args.a2 is None:
-#         args.a2 = int(input("Enter a2: "))
-#
-#     print(f"a1 = {args.a1}, a2 = {args.a2}, sum = {args.a1 + args.a2}")
-
 import argparse
 import subprocess
 import os
@@ -319,7 +263,6 @@ def add_app_to_installed_apps(app_name, settings_path):
     installed_apps_start = None
     installed_apps_end = None
 
-    # Find where INSTALLED_APPS starts and ends
     for i, line in enumerate(lines):
         if 'INSTALLED_APPS' in line and '=' in line:
             installed_apps_start = i
@@ -329,7 +272,6 @@ def add_app_to_installed_apps(app_name, settings_path):
         print("INSTALLED_APPS not found.")
         return
 
-    # Find the end of INSTALLED_APPS (naively assumes proper closing bracket on its own line)
     for j in range(installed_apps_start, len(lines)):
         if ']' in lines[j]:
             installed_apps_end = j
@@ -339,13 +281,13 @@ def add_app_to_installed_apps(app_name, settings_path):
         print("Couldn't find the end of INSTALLED_APPS.")
         return
 
-    # Check if app is already added
+    #  if app is already added
     for line in lines[installed_apps_start:installed_apps_end + 1]:
         if f"'{app_name}'" in line:
             print(f"{app_name} already in INSTALLED_APPS.")
             return
 
-    # Add the app name before the closing bracket
+    
     indent = ' ' * 4  # Adjust if your indent is different
     lines.insert(installed_apps_end, f"{indent}'{app_name}',\n")
 
