@@ -3,7 +3,7 @@
 Welcome to **Django Charm**! This is a handy package that can save your time so you can focus on building what truly matters in your Django project.
 
 ## Features
- -Users no longer need to install Django. 
+- Users no longer need to install Django. 
 - No need to manually create and configure a Django project and app separately.
 - Automatically handles the `urls.py` and `settings.py` setup.
 - Instantly creates `index.html` with a starter template — ready to go.
