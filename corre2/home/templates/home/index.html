@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Form</title>
+</head>
+<body>
+<h1>Welcome To Django Charm</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+
+    <label for="text_input">Text input:</label><br>
+    <input type="text" name="text_input"><br><br>
+
+    <label for="dropdown">Choose an option:</label><br>
+    <select name="dropdown">
+        <option value="option1">Option1</option>
+        <option value="option2">Option2</option>
+    </select><br><br>
+    <label for="file">Choose a file:</label><br>
+    <input type="file" name="file"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

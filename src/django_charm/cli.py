@@ -2,36 +2,74 @@ import argparse
 import subprocess
 import os
 import multiprocessing as mp
-
+import sys
 
 def main():
     parser = argparse.ArgumentParser(description="Create Django Project")
     parser.add_argument("-p", type=str, help="project")
     parser.add_argument("-a", type=str, help="app")
+    parser.add_argument("--createproject", type=str, help="Create Project")
+    parser.add_argument("--createapp", type=str, help="Create App")
 
     args = parser.parse_args()
-    if args.p is None:
-        args.p = input("Enter project name: ")
+    if args.createproject:
+        args.createproject = args.createproject
+        if args.createproject is None:
+            args.createproject = input("Enter project name: ")
 
-    # command = f"django-admin startproject "
+        # command = f"django-admin startproject "
+        if args.createproject:
+            process = subprocess.Popen([sys.executable, "-m", "django", "startproject", args.createproject],
+                                       stderr=subprocess.PIPE,
+                                       stdout=subprocess.PIPE)
+            stdout, stderr = process.communicate()
 
-    process = subprocess.Popen(["django-admin", "startproject", args.p],
-                               stderr=subprocess.PIPE,
-                               stdout=subprocess.PIPE)
-    stdout, stderr = process.communicate()
+            # print(f"Command: {command}")
+            if stdout:
+                print(f"Output:\n{stdout.decode()}")
+            if stderr:
+                print(f"Errors:\n{stderr.decode()}")
 
-    # print(f"Command: {command}")
-    if stdout:
-        print(f"Output:\n{stdout.decode()}")
-    if stderr:
-        print(f"Errors:\n{stderr.decode()}")
+            if process.returncode == 0:
+                if args.a is None:
+                    args.a = input("Enter app name: ")
 
-    if process.returncode == 0:
-        if args.a is None:
-            args.a = input("Enter app name: ")
+                process = subprocess.Popen(
+                    [sys.executable, "manage.py", "startapp", args.a],
+                    # shell=True,
+                    cwd=args.createproject,
+                    stderr=subprocess.PIPE,
+                    stdout=subprocess.PIPE
+                )
+                stdout, stderr = process.communicate()
+
+                if stderr:
+                    print(f"Errors:\n{stderr.decode()}")
+
+                settings_path = os.path.join(args.createproject, args.createproject, "settings.py")
+
+                print("Setting Path: ", settings_path)
+                abs_path = os.path.abspath(settings_path)
+
+                print("Full path: ", abs_path)
+
+                add_app_to_installed_apps(args.a, settings_path=settings_path)
+                urls_path = os.path.join(args.createproject, args.createproject, "urls.py")
+                add_app_to_urls(args.a, urls_path)
+                app_path = os.path.join(args.createproject, args.a, )
+                create_index_template(app_path, args.a)
+                create_views_file(app_path, args.a)
+                create_or_update_app_urls(app_path)
+
+    args = parser.parse_args()
+    if args.createapp:
+        args.a = args.createapp
+
+        if args.p is None:
+            args.p = input("Enter parent project: ")
 
         process = subprocess.Popen(
-            ["python ", "manage.py", "startapp", args.a],
+            [sys.executable, "manage.py", "startapp", args.a],
             # shell=True,
             cwd=args.p,
             stderr=subprocess.PIPE,
@@ -50,22 +88,20 @@ def main():
         print("Full path: ", abs_path)
 
         add_app_to_installed_apps(args.a, settings_path=settings_path)
-
         urls_path = os.path.join(args.p, args.p, "urls.py")
-
         add_app_to_urls(args.a, urls_path)
         app_path = os.path.join(args.p, args.a, )
-
         create_index_template(app_path, args.a)
-
         create_views_file(app_path, args.a)
         create_or_update_app_urls(app_path)
+
 
 
 def create_index_template(app_path, app_name):
     templates_dir = os.path.join(app_path, 'templates', app_name)
     print("Templates_dir:", templates_dir)
     print("Templates_dir_app_name:", app_path)
+
     os.makedirs(templates_dir, exist_ok=True)
 
     index_path = os.path.join(templates_dir, 'index.html')
@@ -255,7 +291,6 @@ def add_app_to_urls(app_name, urls_path):
     print(f"✅ Ensured 'include' is imported and '{app_name}' is registered in {urls_path}")
 
 
-
 def add_app_to_installed_apps(app_name, settings_path):
     with open(settings_path, 'r') as file:
         lines = file.readlines()
@@ -287,7 +322,6 @@ def add_app_to_installed_apps(app_name, settings_path):
             print(f"{app_name} already in INSTALLED_APPS.")
             return
 
-    
     indent = ' ' * 4  # Adjust if your indent is different
     lines.insert(installed_apps_end, f"{indent}'{app_name}',\n")
 
