@@ -33,14 +33,14 @@ pip install django-charm
 
 # Examples:
 
-  #####  Create the Whole Project:
+  #####  Create the whole project:
 
 
-1.Activate your virtual environment.<br>
+- Activate your virtual environment.<br>
 
-2.Use the --createproject flag to specify the project name.<br>
+- Use the --createproject flag to specify the project name.<br>
 
-3.Use -a to specify the app name.
+- Use -a to specify the app name.
 
 
 
@@ -49,13 +49,13 @@ pip install django-charm
 django-charm --createproject myproject -a myapp
 
 ```
-  #####  To create only a new app inside an existing project:
+  ##### Create  new app inside an existing project:
 
-1.Make sure your Django project already exists.<br>
+- Make sure your Django project already exists.<br>
 
-2.Use the --createapp flag to specify the new app name.<br>
+- Use the --createapp flag to specify the new app name.<br>
 
-3.Use -p to specify the parent project name (where manage.py is located).
+- Use -p to specify the parent project name (where manage.py is located).
 
 ```bash
 
