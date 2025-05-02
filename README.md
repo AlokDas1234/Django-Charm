@@ -1,10 +1,8 @@
 # Django Charm
-<hr>
 
 Welcome to **Django Charm**! This is a handy package that can save your time so you can focus on building what truly matters in your Django project.
 
-## 
-<hr>
+## Features
 - Users no longer need to install Django. 
 - No need to manually create and configure a Django project and app separately.
 - Automatically handles the `urls.py` and `settings.py` setup.
@@ -13,11 +11,10 @@ Welcome to **Django Charm**! This is a handy package that can save your time so 
 ---
 
 ## django-charm
-<hr>
+
 This package allows you to create a Django project and app by executing a single command (including generating `views.py`, `urls.py`, and a basic `index.html` template).
 
 ## Table of Contents
-<hr>
 - [Installation](#installation)
 - [Features](#features)
 - [Examples](#examples)
@@ -25,7 +22,7 @@ This package allows you to create a Django project and app by executing a single
 
 
 ## Installation
-<hr>
+
 ```bash
 pip install django-charm
 ```
@@ -35,7 +32,7 @@ pip install django-charm
 
 
 # Examples:
-<hr>
+
   #####  Create the Whole Project:
 
 
@@ -66,6 +63,6 @@ django-charm  --createapp myapp -p parentpackage
 
 ```
 ## License
-<hr>
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
